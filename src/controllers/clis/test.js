@@ -1,8 +1,7 @@
 const path = require("path");
+const { appPath } = require("../../utils/app");
 
 module.exports = (testPath) => {
-    if(testPath[0] == "/")
-        testPath = testPath.slice(1);
-    testPath = path.resolve(__dirname, `../../tests/${ testPath }.js`);
+    testPath = appPath(`tests/${ testPath }.js`);
     require(testPath);
 };

@@ -15,5 +15,6 @@ try {
 } catch(err) {
 
     console.error("Command not found.");
+    console.error(err);
 
 }
