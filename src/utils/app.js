@@ -5,9 +5,7 @@ module.exports.env = (key, defaultValue = null) => {
     return process.env[key] || defaultValue;
 };
 
-module.exports.realAppPath = (subPath = null) => {
-    if(!subPath)
-        return path.resolve(__dirname, "../../");
+module.exports.realAppPath = (subPath = "/") => {
     if(subPath[0] == "/")
         subPath = subPath.slice(1);
     return path.resolve(__dirname, "../../" + subPath);

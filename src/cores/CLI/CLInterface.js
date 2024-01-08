@@ -27,7 +27,7 @@ class CLInterface extends Command {
 
         const commandName = args[0];
         const commandArgs = args.slice(1);
-        if(commandName in this.commands || this.commands[commandName].isMatch(commandArgs))
+        if(commandName in this.commands && this.commands[commandName].isMatch(commandArgs))
             return handler(commandName, this.commands[commandName].optionValues);
         throw new Error("CLInterface cannot found related command");
     }

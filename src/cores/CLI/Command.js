@@ -12,6 +12,7 @@ class Command {
         if(typeof setOption == "function")
             option = setOption(option);
         this.options.push(option);
+        return this;
     }
 
     isMatch(args) {
