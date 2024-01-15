@@ -8,11 +8,11 @@ const { Sequelize } = require("sequelize");
 module.exports = {
 
     async up({ context: queryInterface }) {
-        await queryInterface.createTable('{{ tableName }}', {});
+        await queryInterface.createTable("{{ tableName }}", {});
     },
 
     async down({ context: queryInterface }) {
-        await queryInterface.dropTable('{{ tableName }}');
+        await queryInterface.dropTable("{{ tableName }}");
     }
 
 };

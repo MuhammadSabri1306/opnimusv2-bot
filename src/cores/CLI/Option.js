@@ -26,14 +26,13 @@ class Option {
     }
 
     getValue(cmd) {
+        if(this.type === Boolean) {
+            return cmd.indexOf(this.getInterfaceText()) === 0;
+        }
         const regExp = `${ this.getInterfaceText() }=(.+)`;
         const match = cmd.match(new RegExp(regExp));
-
-        if(match) {
-            if(this.type == Boolean)
-                return match[1] == true;
+        if(match)
             return this.type(match[1]);
-        }
 
         return null;
     }

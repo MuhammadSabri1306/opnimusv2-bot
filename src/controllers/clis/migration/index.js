@@ -3,6 +3,7 @@ const { Umzug, JSONStorage } = require("umzug");
 const dbConfig = require("../../../config/database/default");
 const { appPath, realAppPath } = require("../../../utils/app");
 const { MigrationTemplate, MigrationWithTableTemplate } = require("../../../utils/migration");
+const { formatDate } = require("../../../utils/date");
 
 const { host, username, password, database } = dbConfig.get();
 const migrationsDir = appPath("database/migrations");
@@ -56,10 +57,11 @@ module.exports.createMigration = async (migrationName) => {
         templateContent: template.getContent()
     });
     await umzug.create({
-        name: `${ migrationName }.js`,
+        name: `${ formatDate(new Date(), "y_m_d_his") }_${ migrationName }.js`,
         folder: migrationsDir,
-        prefix: "DATE",
-        skipVerify: true
+        prefix: "NONE",
+        skipVerify: true,
+        allowConfusingOrdering: true
     });
 
 };
@@ -102,7 +104,7 @@ module.exports.execute = async (params = {}) => {
 };
 
 module.exports.revert = async (params = {}) => {
-    const { name, step } = params;
+    const { name, step, all } = params;
     const { umzug, sequelize } = this.createMigrator();
 
     if(Array.isArray(name)) {
@@ -119,6 +121,11 @@ module.exports.revert = async (params = {}) => {
 
         // e.g await umzug.down({ step: 2 })
         await umzug.down({ step });
+
+    } else if(all) {
+
+        // e.g await umzug.down({ step: 2 })
+        await umzug.down({ to: 0 });
 
     } else {
 

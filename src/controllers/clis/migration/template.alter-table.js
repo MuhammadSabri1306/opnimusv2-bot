@@ -8,15 +8,15 @@ const { Sequelize } = require("sequelize");
 module.exports = {
 
     async up({ context: queryInterface }) {
-        // await queryInterface.addColumn('{{ tableName }}', {});
-        // await queryInterface.changeColumn('{{ tableName }}', {});
-        // await queryInterface.removeColumn('{{ tableName }}', {});
+        // await queryInterface.addColumn("{{ tableName }}", {});
+        // await queryInterface.changeColumn("{{ tableName }}", {});
+        // await queryInterface.removeColumn("{{ tableName }}", {});
     },
 
     async down({ context: queryInterface }) {
-        // await queryInterface.addColumn('{{ tableName }}', {});
-        // await queryInterface.changeColumn('{{ tableName }}', {});
-        // await queryInterface.removeColumn('{{ tableName }}', {});
+        // await queryInterface.addColumn("{{ tableName }}", {});
+        // await queryInterface.changeColumn("{{ tableName }}", {});
+        // await queryInterface.removeColumn("{{ tableName }}", {});
     }
 
 };
